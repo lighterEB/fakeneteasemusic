@@ -29,15 +29,17 @@
                     <img :src="playlist.creator.backgroundUrl" alt="">
                     <span class="nickname">{{ playlist.creator.nickname }}</span>
                     <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-caidan"></use>
+                        <use xlink:href="#icon-details"></use>
                     </svg>
                     <div v-if="isDescriptionLoaded">
                         <p class="rightP_two" :class="{ 'expanded': isDescriptionExpanded }">
                             {{ truncatedDescription }}
                             <span is-link @click="showPopup">更多</span>
-                            <van-popup v-model:show="show" :style="{ height:'40%', right:'25px', backgroundColor: 'rgba(0, 0, 0, 0.5)',backdropFilter: 'blur(8px)' }">
-                                <img :src="playlist.creator.backgroundUrl" />
-                                <p>
+                            <van-popup v-model:show="show"
+                                :style="{ height: '80%', right: '25px', backgroundColor: 'rgba(0, 0, 0, 0.5)', backdropFilter: 'blur(8px)', position: '{absolute}' }">
+                                <img :src="playlist.creator.backgroundUrl"
+                                    style="display: flex; margin-top: 10px; margin-left: 38%; width: 80px; height: 80px;" />
+                                <p style="display: flex; margin: 5%">
                                     {{ playlist.description }}
                                 </p>
                             </van-popup>
@@ -89,7 +91,34 @@
                 </svg>
                 <span>多选</span>
             </div>-->
+            <div class="selectMenu">
+                <span>
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-pinglun1"></use>
+                    </svg>
+                    <span class="text">评论</span>
+                </span>
+                <span>
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-fenxiang4"></use>
+                    </svg>
+                    <span class="text">分享</span>
+                </span>
+                <span>
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-xiazai"></use>
+                    </svg>
+                    <span class="text">下载</span>
+                </span>
+                <span>
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-UIsheji_menjinxitong-13"></use>
+                    </svg>
+                    <span class="text">多选</span>
+                </span>
+            </div>
         </div>
+
     </div>
 </template>
 <script>
@@ -291,6 +320,28 @@ export default {
             .popup-content {
                 padding: 16px;
             }
+        }
+
+    }
+
+    .selectMenu {
+        display: flex;
+        position: absolute;
+        margin-top: 120%;
+        color: #d1c9c9;
+
+        span {
+            margin-left: 14px;
+
+            .icon {
+                width: 56px;
+            }
+        }
+
+        span.text {
+            backdrop-filter: blur(10px);
+            background-color: rgba(10, 10, 10, 0.5);
+            border-radius: 10%;
         }
 
     }
